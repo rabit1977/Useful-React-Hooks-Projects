@@ -1,37 +1,23 @@
-import React, { useState } from 'react';
-export default function App() {
-  const [arr, setArr] = useState([3, 6]);
-  const [obj, setObj] = useState({ num: 1, name: 'Desmond' });
+import { useState, useEffect } from 'react';
+import './index.css';
 
-  const handleArrClick = () => {
-    const newArr = [1, 5, 7];
-    setArr([...arr, ...newArr]);
-  };
-  const handleObjClick = () => {
-    const newObj = { name: 'Ifeanyi', age: 25 };
-     setObj({ ...obj, ...newObj });
-  };
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+  // console.log(count);
+  }, [count]);
+
   return (
-    <div
-      style={{
-        border: '2px solid black',
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        padding: '10px',
-        margin: '10px',
-        boxShadow: '3px 3px 6px rgba(5,5,5,.5)', borderRadius: '10px'
-      }}
-    >
-      <button style={{ margin: '15px' }} onClick={handleArrClick}>
-        Set Array State
+    <div className='border-2 m-4 p-4 border-blue-300'>
+      <h2 className='p-b2 mb-2 font-semibold text-lg '>{count}</h2>
+      <button
+        className='border-2 text-xl font-semibold border-blue-300 px-4 py-1 rounded-lg'
+        onClick={() => setCount(count + 1)}
+      >
+        Increment
       </button>
-      {arr}
-      <button style={{ margin: '15px' }} onClick={handleObjClick}>
-        Set Object State
-      </button>
-      {obj.name}
     </div>
   );
-}
+};
+export default App;
