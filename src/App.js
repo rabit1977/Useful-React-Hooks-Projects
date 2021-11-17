@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 export default function App() {
-  const [num, setNum] = useState(0);
-  function incrementNumber() {
-    setNum(num + 1);
-  }
-  function decrementNumber() {
-    setNum(num - 1);
-  }
-  function resetNumber() {
-    setNum(0);
-  }
+  const [count, setCount] = useState(0);
+  const handleClick = () => {
+    setCount((prevCount) => prevCount + 5);
+  };
 
   return (
     <div
@@ -21,17 +15,13 @@ export default function App() {
         flexDirection: 'column',
         padding: '10px',
         margin: '10px',
-        boxShadow: '3px 3px 6px rgba(0,0,0,.5)',
+        boxShadow: '3px 3px 6px rgba(5,5,5,.5)',
       }}
     >
-      <h1>{num}</h1>
-      <button style={{ margin: '15px' }} onClick={incrementNumber}>
-        Increment
+      <h1>{count}</h1>
+      <button style={{ margin: '15px' }} onClick={handleClick}>
+        Add Five
       </button>
-      <button style={{ marginBottom: '15px' }} onClick={decrementNumber}>
-        Decrement
-      </button>
-      <button onClick={resetNumber}>Reset</button>
     </div>
   );
 }
